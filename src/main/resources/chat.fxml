@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.stage.*?>
+
+<Stage title="Simple chat" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.sda.view.ChatController">
+   <scene>
+      <Scene>
+         <root>
+            <VBox>
+               <TextArea fx:id="chatTextArea" editable="false" text="Tomek2012: Cześć, tu Tomek!&#10;Alicja: Hej Tomek!" wrapText="true" VBox.vgrow="ALWAYS" />
+               <HBox>
+                  <TextField fx:id="messageTextField" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#sendBtnAction" text="Send" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" text="Logout" />
+               </HBox>
+            </VBox>
+         </root>
+      </Scene>
+   </scene>
+</Stage>
