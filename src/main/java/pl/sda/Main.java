@@ -19,10 +19,20 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        // to EntityManagerUtil.get() można wywalić, jest tylko na potrzeby sprawdzenia czy dziala Ci baza danych
         EntityManagerUtil.get();
         application = this;
         stage.close();
+        // zamiast wczytywac stage dopiero wtedy kiedy ich potrzebujemy robimy to na samym poczatku
+        // zeby uniknac dlugich czasow ladowania przy przelaczaniu ekranow
         loadStages();
+
+        //tutaj tworz serwisy i ustaw/przekaz je tam gdzie potrzebujesz
+        CurrentTimeService currentTimeService = new CurrentTimeService();
+        this.chatController.setCurrentTimeService(currentTimeService);
+
+
+        //tutaj pokazywanie pierwszego stage
         loginStage.show();
         currentStage = loginStage;
     }
@@ -35,7 +45,7 @@ public class Main extends Application {
         this.chatStage = chatStageLoader.load();
         this.chatController = chatStageLoader.getController();
 
-        this.chatController.setCurrentTimeService(new CurrentTimeService());
+
     }
 
     public void showChatStage() {
